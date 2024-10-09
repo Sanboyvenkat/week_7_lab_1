@@ -6,7 +6,7 @@ from pathlib import Path  # Import Path from the pathlib library to manage file 
 data_dir = Path.cwd() / 'data'
 
 # Specify the path to your JSON file
-input_file_path = data_dir / 'input.json'  # Path for the input JSON file
+input_file_path = data_dir / 'input.jason'  # Path for the input JSON file
 output_file_path = data_dir / 'output.xml'  # Path for the output XML file
 
 # Open and read the JSON file
@@ -21,10 +21,8 @@ first_patient = patients[0]  # Select the first patient in the list
 # Extract specific details of the first patient
 first_patient_id = first_patient['id']  # Retrieve the patient's ID
 first_patient_name = first_patient['name']  # Retrieve the patient's name
-########################### FILL THE REMAINING PYTHON CODE ###########################
-first_patient_age = first_patient['']  # Retrieve the patient's age
-first_patient_gender = first_patient['']  # Retrieve the patient's gender
-######################################################
+first_patient_age = first_patient['age']  # Retrieve the patient's age
+first_patient_gender = first_patient['gender']  # Retrieve the patient's gender
 
 # Create the XML structure
 root = etree.Element("patient")  # Create the root element for the XML document
@@ -34,12 +32,13 @@ root.set("id", str(first_patient_id))  # Set the patient's ID as an attribute of
 patient_name = etree.SubElement(root, "name")  # Create a 'name' element as a child of 'patient'
 patient_name.text = first_patient_name  # Set the text of the 'name' element to the patient's name
 
-########################### FILL THE REMAINING PYTHON CODE ###########################
+# Add a sub-element for the patient's age and set its text
+patient_age = etree.SubElement(root, "age")  # Create an 'age' element as a child of 'patient'
+patient_age.text = str(first_patient_age)  # Set the text of the 'age' element to the patient's age
 
-
-
-
-######################################################
+# Add a sub-element for the patient's gender and set its text
+patient_gender = etree.SubElement(root, "gender")  # Create a 'gender' element as a child of 'patient'
+patient_gender.text = first_patient_gender  # Set the text of the 'gender' element to the patient's gender
 
 # Create an ElementTree object from the root element
 tree = etree.ElementTree(root)

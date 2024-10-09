@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<patient id="1">
+  <name>John Doe</name>
+  <age>45</age>
+  <gender>male</gender>
+</patient>
